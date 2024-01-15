@@ -1,17 +1,21 @@
-// Endpoint for querying the Fibonacci numbers
+// Endpoint for querying the fibonacci numbers
 
 import fibonacci from "./fib";
 
 export default (req, res) => {
-  const num = parseInt(req.params.num); // Correctly extract the 'num' parameter
-
-  if (isNaN(num) || num < 0) {
-    // Check if 'num' is not a valid number or if it's negative
-    res.send(`fibonacci(${num}) is undefined`);
-  } else {
-    const fibN = fibonacci(num);
-    const result = `fibonacci(${num}) is ${fibN}`;
-
+  const { num } = req.params;
+  let result = `fibonacci(${num}) is undefined`;
+  if(num==undefined)
+  {
+    res.send(result);
+  }
+  else
+  {
+    const fibN = fibonacci(parseInt(num));
+    result = `fibonacci(${num}) is ${fibN}`;
+    if (fibN < 0) {
+      result = `fibonacci(${num}) is undefined`;
+    }
     res.send(result);
   }
 };
