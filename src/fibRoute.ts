@@ -3,12 +3,11 @@
 import fibonacci from "./fib";
 
 export default (req, res) => {
-  // req = { params: { num: 2}}
-  // console.log(req.params.num);
-  let result = ""
-  if(req.params.num != undefined){
-    const { num } = req.params;
-    const fibN = fibonacci(parseInt(num));
+  let result: string
+  let num: string
+  if(req.params.num){
+    num  = req.params.num;
+    const fibN: number = fibonacci(parseInt(num));
     if (fibN < 0) {
       result = `fibonacci(${num}) is undefined`;
     }
