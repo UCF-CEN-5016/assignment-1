@@ -5,7 +5,7 @@ import fibonacci from "./fib";
 export default (req, res) => {
   const { num } = req.params;
   let result = `fibonacci(${num}) is undefined`;
-  if(num==undefined)
+  if(!req.params.num)
   {
     res.send(result);
   }
