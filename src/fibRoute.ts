@@ -19,7 +19,7 @@ import fibonacci from "./fib";
 
 export default (req: Request, res: Response) => {
   let result: string;
-  const num: string | undefined = req?.params?.num as string;
+  const num: string | undefined = req?.params?.num;
   const parsedNum: number = parseInt(num);
 
   if (!isNaN(parsedNum)) {
