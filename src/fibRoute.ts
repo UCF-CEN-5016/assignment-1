@@ -2,8 +2,8 @@ import { Request, Response } from 'express';
 import fibonacci from "./fib";
 
 export default (req: Request, res: Response) => {
-  let result;
-  const num = req?.params?.num;
+  let result: string;
+  const num: string | undefined = req?.params?.num;
   const parsedNum: number = parseInt(num);
 
   if (!isNaN(parsedNum)) {
