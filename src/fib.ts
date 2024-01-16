@@ -1,5 +1,5 @@
 // util function that computes the fibo nacci numbers
-export default function fibonacci(n: number): number{
+export default function fibonacci(n){
   if (n < 0) {
     return -1;
   } else if (n == 0) {
