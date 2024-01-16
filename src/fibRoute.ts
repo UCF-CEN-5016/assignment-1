@@ -17,7 +17,5 @@ export default (req: Request, res: Response) => {
   } else {
     result = `Invalid input: ${num}`;
   }
-
   res?.send(result);
 };
-
