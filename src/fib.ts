@@ -1,4 +1,6 @@
 // util function that computes the fibonacci numbers
+// modified to include the number type after function fibonacci
+// Adding module.exports corrects export issue
 export default function fibonacci(n): number {
   if (n < 0) {
     return -1;
