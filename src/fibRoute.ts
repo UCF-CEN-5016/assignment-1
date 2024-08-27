@@ -1,8 +1,9 @@
 // Endpoint for querying the fibonacci numbers
 
 import fibonacci from "./fib";
+import { Request, Response } from "express";
 
-export default (req: {params: string;}, res:{send: (arg0: string) => void;}) => {
+export default (req: Request, res: Response) => {
   const num = req.params;
 
   const fibN = fibonacci(parseInt(num));
