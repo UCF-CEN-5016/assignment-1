@@ -3,7 +3,7 @@
 import fibonacci from "./fib";
 import { Request, Response } from "express";
 
-export default (req: Request, res: Response) => {
+export default (req: Request<string>, res: Response) => {
   const num = req.params;
 
   const fibN = fibonacci(parseInt(num));
