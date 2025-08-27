@@ -1,12 +1,12 @@
 // util function that computes the fibonacci numbers
-export default function fibonacci(n) {
-  if (n < 0) {
-    return -1;
-  } else if (n == 0) {
-    return 0;
-  } else if (n == 1) {
-    return 1;
-  }
+// using an iterative approach for efficiency with help from ChatGPT
+export default function fibonacci(n: number): number {
+  if (n < 0) throw new Error("n must be non-negative");
+  if (n <= 1) return n;
 
-  return fibonacci(n - 1) + fibonacci(n - 2);
+  let a = 0, b = 1;
+  for (let i = 2; i <= n; i++) {
+    [a, b] = [b, a + b];
+  }
+  return b;
 }
