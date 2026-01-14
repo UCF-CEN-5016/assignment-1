@@ -1,23 +1,33 @@
 // Endpoint for querying the fibonacci numbers
-import fibonacci from "./fib";
-import express from "express";
- // import the Fibonacci function
+import { Router, Request, Response } from 'express';
+import { fibonacci } from './fib';
 
-const router = express.Router();
+const router = Router();
 
-// GET /fib/:n
-router.get("/:n", (req, res) => {
-  const n = parseInt(req.params.n, 10);
+// Type for route parameters
+interface FibParams {
+  n: string; // URL parameters are always strings
+}
 
-  if (isNaN(n) || n < 0) {
-    return res.status(400).json({ error: "n must be a non-negative integer" });
+router.get('/:n', (req: Request<FibParams>, res: Response) => {
+  // Access route parameter safely
+  const nParam: string = req.params.n;
+
+  // Convert to number
+  const n: number = parseInt(nParam, 10);
+
+  if (isNaN(n) || n < 1) {
+    return res.status(400).json({ error: 'Please provide a positive integer' });
   }
 
   try {
-    const result = fibonacci(n);
-    res.json({ n, fibonacci: result });
-  } catch (err) {
-    res.status(500).json({ error: "Internal server error" });
+    // Call the typed Fibonacci function
+    const fibNumbers: number[] = fibonacci(n);
+    res.json({ fibonacci: fibNumbers });
+  } catch (err: unknown) {
+    // Handle unknown errors safely
+    const message = err instanceof Error ? err.message : 'Unknown error';
+    res.status(500).json({ error: message });
   }
 });
 
