@@ -1,6 +1,7 @@
 // Endpoint for querying the fibonacci numbers
+import fibonacci from "./fib";
 import express from "express";
-import { fibonacci } from "./fib"; // import the Fibonacci function
+ // import the Fibonacci function
 
 const router = express.Router();
 
