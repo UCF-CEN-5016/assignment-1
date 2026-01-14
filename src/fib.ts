@@ -1,7 +1,4 @@
 // util function that computes the fibonacci numbers
-@param n - non-negative integer
- * @throws Error if n is negative
- */
 export const fibonacci = (n: number): number => {
   if (!Number.isInteger(n) || n < 0) {
     throw new Error("n must be a non-negative integer");
